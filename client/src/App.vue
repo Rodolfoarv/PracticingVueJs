@@ -1,10 +1,14 @@
 <template lang="pug">
   #app.todo-app
-    div {{ message }}
+    todo-list()
 </template>
 
 <script lang="ts">
 import { defineComponent } from '@vue/composition-api';
+
+// Components
+
+import TodoList from './components/TodoList.vue';
 
 export default defineComponent({
   name: 'App',
@@ -15,6 +19,7 @@ export default defineComponent({
       message: 'Todo list should be here',
     };
   },
+  components: { TodoList },
 });
 </script>
 
