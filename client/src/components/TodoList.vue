@@ -1,19 +1,24 @@
 <template lang="pug">
 .todo-list
-  <ul>
-    <todo-item></todo-item>
-    <todo-item></todo-item>
-    <todo-item></todo-item>
-  </ul>
+
+  todo-item(
+    v-for='todo in todos',
+    :key='todo._id',
+    :todo='todo',
+  ) {{ todo.description }}
+
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, PropType } from '@vue/composition-api';
+
+import { Todo } from '@/types/Todo';
 
 import TodoItem from './TodoItem.vue';
 
 export default defineComponent({
   name: 'todo-list',
+  props: { todos: { type: Array as PropType<Todo[]>, required: true } },
   data() {
     return {};
   },
