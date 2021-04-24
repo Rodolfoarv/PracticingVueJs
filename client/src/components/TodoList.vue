@@ -10,7 +10,7 @@
       :key='todo._id',
       :todo='todo',
       @delete='$emit("delete-todo", $event)'
-      @update='$emit("update-todo", $event)',
+      @update-todo='$emit("update-todo", $event)',
     ) {{ todo.description }}
 
 </template>
