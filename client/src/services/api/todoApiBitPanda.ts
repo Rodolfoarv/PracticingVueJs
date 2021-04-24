@@ -14,7 +14,7 @@ export interface GetAllTodosOptions {
 
 const apiUrl = 'http://localhost:3000/api/v1';
 
-export function fetchTodos(
+export function getAllTodos(
   options: GetAllTodosOptions
 ): Promise<GetAllTodosResponse> {
   const url = new URL(`${apiUrl}/todo`);
