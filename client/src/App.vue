@@ -1,15 +1,13 @@
 <template lang="pug">
 #app.todo-app
-  todo-list(:todos='todos')
-  <ul>
-    <li>{{getTodos.items}}</li>
-  </ul>
+  todo-list(:todosList='todosList',
+            @create-todo='createTodo($event)')
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
 
-import { fetchTodos } from '@/services/api/todoApiBitPanda';
+import { getAllTodos, createTodo } from '@/services/api/todoApiBitPanda';
 import { Pagination } from '@/types/Pagination';
 import { Todo } from '@/types/Todo';
 
@@ -21,20 +19,20 @@ export default defineComponent({
   name: 'App',
   setup() {
     // utilise todo-bitpanda-server to get data
-    const todos = ref<Todo[]>([]);
-    const pages = ref<Pagination>({} as Pagination);
+    const todosList = ref<Todo[]>([]);
+    const numberOfPages = ref<Pagination>({} as Pagination);
 
     const getTodos = async (offset = 0, limit = 5, description?: string) => {
-      const response = await fetchTodos({ offset, limit, description });
+      const response = await getAllTodos({ offset, limit, description });
 
-      todos.value = response.items;
-      pages.value = response.meta;
+      todosList.value = response.items;
+      numberOfPages.value = response.meta;
       console.log(response);
     };
 
 
     return {
-      todos,
+      todosList,
       getTodos
     };
   },
@@ -50,7 +48,17 @@ export default defineComponent({
   methods: {
     onError(e: Error){
       console.log(e);
+    },
+    async createTodo(description: string){
+      try {
+        const createTodoTask = await createTodo(description);
+
+        this.todosList.push(createTodoTask);
+      }catch (e) {
+        this.onError(e);
+      }
     }
+
   },
   components: { TodoList },
 });

@@ -1,11 +1,15 @@
 <template lang="pug">
 .todo-list
-
-  todo-item(
-    v-for='todo in todos',
-    :key='todo._id',
-    :todo='todo',
-  ) {{ todo.description }}
+  div
+    create-todo(
+      :class='{ listEmpty: isListEmpty }',
+      @create='$emit("create-todo", $event)'
+    )
+    todo-item(
+      v-for='todo in todosList',
+      :key='todo._id',
+      :todo='todo',
+    ) {{ todo.description }}
 
 </template>
 
@@ -14,15 +18,21 @@ import { defineComponent, PropType } from '@vue/composition-api';
 
 import { Todo } from '@/types/Todo';
 
+import CreateTodo from './CreateTodo.vue';
 import TodoItem from './TodoItem.vue';
 
 export default defineComponent({
-  name: 'todo-list',
-  props: { todos: { type: Array as PropType<Todo[]>, required: true } },
+  name: 'todos-list',
+  props: { todosList: { type: Array as PropType<Todo[]>, required: true } },
   data() {
     return {};
   },
-  components: { TodoItem },
+  computed: {
+    isListEmpty(): boolean {
+      return !this.todosList?.length;
+    }
+  },
+  components: { TodoItem, CreateTodo },
 });
 </script>
 
@@ -33,5 +43,11 @@ export default defineComponent({
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   width: 100%;
+}
+
+.create-todo {
+  &.listEmpty {
+    border-radius: $todo-list-border-radius;
+  }
 }
 </style>
