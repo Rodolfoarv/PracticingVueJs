@@ -3,13 +3,14 @@
   todo-list(:todosList='todosList',
             @create-todo='createTodo($event)',
             @delete-todo='deleteTodoTask($event)',
+            @update-todo='updateTodoTask($event)',
             )
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
 
-import { getAllTodos, createTodo, deleteTodo } from '@/services/api/todoApiBitPanda';
+import { getAllTodos, createTodo, deleteTodo, updateTodo } from '@/services/api/todoApiBitPanda';
 import { Pagination } from '@/types/Pagination';
 import { Todo } from '@/types/Todo';
 
@@ -66,6 +67,13 @@ export default defineComponent({
         this.todosList = this.todosList.filter((t) => t._id !== todo._id);
       } catch (e){
         this.onError(e);
+      }
+    },
+    async updateTodoTask(todo: Todo){
+      try {
+        await updateTodo(todo);
+      }catch(e){
+        this.onError(e)
       }
     }
   },
