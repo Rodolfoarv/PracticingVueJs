@@ -1,5 +1,10 @@
 <template lang="pug">
-  li.todo-item
+  li.todo-item(:class='todoItemCssClass')
+    checkbox.todo-item_checkbox(
+      :checked='todo.done',
+      @update='updateTodo(todo)'
+    )
+ 
     p.todo-item_description {{ todo.description }}
 
     span.todo-item_deleteTodo(@click='$emit("delete", todo)')
@@ -15,13 +20,32 @@ import { defineComponent,PropType } from '@vue/composition-api';
 
 import { Todo } from '@/types/Todo';
 
+import Checkbox  from './utils/Checkbox.vue';
+
 export default defineComponent({
   name: 'todo-item',
   props: { todo: {type: Object as PropType<Todo>, required: true}},
+  computed: {
+    todoItemCssClass(): Record<string, boolean> {
+      return {
+        'todo-item--done': this.todo.done,
+      };
+    },
+  },
   data() {
     return {};
   },
-});
+  components: {
+    Checkbox,
+  },
+  methods: {
+    updateTodo(todo: Todo){
+      todo.done = !todo.done;
+      this.$emit('update-todo', todo);
+    }
+  },
+},
+);
 
 </script>
 
@@ -48,6 +72,17 @@ export default defineComponent({
   &:hover &_deleteTodo {
     z-index: 0;
   }
+
+  &_checkbox {
+    margin: 5px 0.5rem 5px 10px;
+  }
+
+  &--done &_description {
+    text-decoration-line: line-through;
+    color: #ccc7c7;
+    font-weight: 200;
+  }
+
 
 }
 </style>
