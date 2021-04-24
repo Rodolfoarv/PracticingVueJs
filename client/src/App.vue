@@ -1,10 +1,15 @@
 <template lang="pug">
-#app.todo-app
-  todo-list(:todosList='todosList',
-            @create-todo='createTodo($event)',
-            @delete-todo='deleteTodoTask($event)',
-            @update-todo='updateTodoTask($event)',
-            )
+#app
+  .todo-app
+    todo-list(:todosList='todosList',
+              @create-todo='createTodo($event)',
+              @delete-todo='deleteTodoTask($event)',
+              @update-todo='updateTodoTask($event)',
+              )
+    .pager
+        span.error(v-if='error') Cannot load pages
+        pager(:pages='pages', @change='switchPage($event)')
+  
 </template>
 
 <script lang="ts">
@@ -17,26 +22,28 @@ import { Todo } from '@/types/Todo';
 // Components
 
 import TodoList from './components/TodoList.vue';
+import Pager from './components/utils/Pager.vue';
 
 export default defineComponent({
   name: 'App',
   setup() {
     // utilise todo-bitpanda-server to get data
     const todosList = ref<Todo[]>([]);
-    const numberOfPages = ref<Pagination>({} as Pagination);
+    const pages = ref<Pagination>({} as Pagination);
 
     const getTodos = async (offset = 0, limit = 5, description?: string) => {
       const response = await getAllTodos({ offset, limit, description });
 
       todosList.value = response.items;
-      numberOfPages.value = response.meta;
+      pages.value = response.meta;
       console.log(response);
     };
 
 
     return {
       todosList,
-      getTodos
+      getTodos,
+      pages
     };
   },
   mounted() {
@@ -75,14 +82,45 @@ export default defineComponent({
       }catch(e){
         this.onError(e)
       }
+    },
+    switchPage(pagination: Pagination){
+      this.getTodos(pagination.offset, pagination.limit).catch((e) => this.onError(e));
     }
   },
-  components: { TodoList },
+  components: { TodoList, Pager },
 });
 </script>
 
 <style lang="scss">
+$todos-width: 589px;
+
+#app {
+  min-height: 100%;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 100px 25px 50px;
+}
+
 .todo-app {
+  max-width: $todos-width;
+  min-width: calc(min(#{$todos-width}, 100%));
+  margin: 0 auto;
   text-align: center;
+}
+
+.search {
+  margin-bottom: 1rem;
+}
+
+.pager {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  .error {
+    margin-left: 1px;
+    color: red;
+  }
 }
 </style>
