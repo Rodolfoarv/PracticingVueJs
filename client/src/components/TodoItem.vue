@@ -2,6 +2,12 @@
   li.todo-item
     p.todo-item_description {{ todo.description }}
 
+    span.todo-item_deleteTodo(@click='$emit("delete", todo)')
+      <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="0.715217" y1="1.01405" x2="11.2707" y2="11.5695" stroke="#A3A3A3"/>
+        <line x1="0.646447" y1="11.5695" x2="11.2019" y2="1.01405" stroke="#A3A3A3"/>
+      </svg>
+
 </template>
 
 <script lang="ts">
@@ -33,6 +39,14 @@ export default defineComponent({
     padding: 10px ;
     word-break: break-all;
 
+  }
+  &_deleteTodo {
+    @include action-button;
+    z-index: -1;
+  }
+
+  &:hover &_deleteTodo {
+    z-index: 0;
   }
 
 }

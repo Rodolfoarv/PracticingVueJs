@@ -1,13 +1,15 @@
 <template lang="pug">
 #app.todo-app
   todo-list(:todosList='todosList',
-            @create-todo='createTodo($event)')
+            @create-todo='createTodo($event)',
+            @delete-todo='deleteTodoTask($event)',
+            )
 </template>
 
 <script lang="ts">
 import { defineComponent, ref } from '@vue/composition-api';
 
-import { getAllTodos, createTodo } from '@/services/api/todoApiBitPanda';
+import { getAllTodos, createTodo, deleteTodo } from '@/services/api/todoApiBitPanda';
 import { Pagination } from '@/types/Pagination';
 import { Todo } from '@/types/Todo';
 
@@ -57,8 +59,15 @@ export default defineComponent({
       }catch (e) {
         this.onError(e);
       }
+    },
+    async deleteTodoTask(todo: Todo){
+      try{
+        await deleteTodo(todo);
+        this.todosList = this.todosList.filter((t) => t._id !== todo._id);
+      } catch (e){
+        this.onError(e);
+      }
     }
-
   },
   components: { TodoList },
 });
