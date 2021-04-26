@@ -39,9 +39,8 @@ export default defineComponent({
 </script>
 
 <style scoped lang="scss">
-@import './styles/variables.scss';
 .todo-list {
-  border-radius: $todo-list-border-radius;
+  border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   width: 100%;
@@ -49,7 +48,7 @@ export default defineComponent({
 
 .create-todo {
   &.listEmpty {
-    border-radius: $todo-list-border-radius;
+    border-radius: 20px;
   }
 }
 </style>

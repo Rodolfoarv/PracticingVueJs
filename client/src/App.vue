@@ -1,6 +1,7 @@
 <template lang="pug">
 #app
   .todo-app
+    search-bar(v-model='searchQuery')
     todo-list(:todosList='todosList',
               @create-todo='createTodo($event)',
               @delete-todo='deleteTodoTask($event)',
@@ -13,7 +14,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from '@vue/composition-api';
+import { defineComponent, ref, watch } from '@vue/composition-api';
 
 import { getAllTodos, createTodo, deleteTodo, updateTodo } from '@/services/api/todoApiBitPanda';
 import { Pagination } from '@/types/Pagination';
@@ -23,6 +24,7 @@ import { Todo } from '@/types/Todo';
 
 import TodoList from './components/TodoList.vue';
 import Pager from './components/utils/Pager.vue';
+import SearchBar from './components/utils/SearchBar.vue'
 
 export default defineComponent({
   name: 'App',
@@ -30,6 +32,7 @@ export default defineComponent({
     // utilise todo-bitpanda-server to get data
     const todosList = ref<Todo[]>([]);
     const pages = ref<Pagination>({} as Pagination);
+    const searchQuery = ref(' ');
 
     const getTodos = async (offset = 0, limit = 5, description?: string) => {
       const response = await getAllTodos({ offset, limit, description });
@@ -39,11 +42,21 @@ export default defineComponent({
       console.log(response);
     };
 
+    let debounceId: number;
+
+    watch(searchQuery, (newSearchQuery) => {
+      clearTimeout(debounceId);
+      debounceId = setTimeout(() => {
+        getTodos(0, undefined, newSearchQuery).catch((e) => console.error(e));
+      }, 300);
+    });
+
 
     return {
       todosList,
       getTodos,
-      pages
+      pages,
+      searchQuery
     };
   },
   mounted() {
@@ -87,7 +100,7 @@ export default defineComponent({
       this.getTodos(pagination.offset, pagination.limit).catch((e) => this.onError(e));
     }
   },
-  components: { TodoList, Pager },
+  components: { TodoList, Pager, SearchBar },
 });
 </script>
 
@@ -109,8 +122,8 @@ $todos-width: 589px;
   text-align: center;
 }
 
-.search {
-  margin-bottom: 1rem;
+.search-bar {
+  margin-bottom: 1.5rem;
 }
 
 .pager {

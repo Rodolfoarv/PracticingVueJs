@@ -50,7 +50,6 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import './styles/mixins.scss';
 .todo-item {
   display: flex;
   justify-content: flex-start;
@@ -65,7 +64,9 @@ export default defineComponent({
 
   }
   &_deleteTodo {
-    @include action-button;
+    margin: 0 10px 0 auto;
+    padding: 5px 10px;
+    cursor: pointer;
     z-index: -1;
   }
 
