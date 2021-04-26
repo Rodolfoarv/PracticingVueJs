@@ -7,7 +7,6 @@
   input.search-bar_input(
     type="text",
     placeholder='Search',
-
     @input='$emit("input", $event.target.value)'
   )
 </template>
@@ -26,7 +25,7 @@ export default defineComponent({
 $height: auto;
 .search-bar {
   width: 100%;
-  background: #dbdbdb;
+  background: #dbdbde;
   border-radius: 20px;
   text-align: left;
   display: flex;

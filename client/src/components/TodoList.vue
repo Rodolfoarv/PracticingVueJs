@@ -2,7 +2,6 @@
 .todo-list
   div
     create-todo(
-      :class='{ listEmpty: isListEmpty }',
       @create='$emit("create-todo", $event)'
     )
     todo-item(
@@ -29,11 +28,6 @@ export default defineComponent({
   data() {
     return {};
   },
-  computed: {
-    isListEmpty(): boolean {
-      return !this.todosList?.length;
-    }
-  },
   components: { TodoItem, CreateTodo },
 });
 </script>
@@ -46,9 +40,8 @@ export default defineComponent({
   width: 100%;
 }
 
-.create-todo {
-  &.listEmpty {
-    border-radius: 20px;
-  }
+.create-todo { 
+    border-radius: 22px;
 }
+
 </style>
