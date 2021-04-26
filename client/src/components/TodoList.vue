@@ -2,7 +2,6 @@
 .todo-list
   div
     create-todo(
-      :class='{ listEmpty: isListEmpty }',
       @create='$emit("create-todo", $event)'
     )
     todo-item(
@@ -29,27 +28,20 @@ export default defineComponent({
   data() {
     return {};
   },
-  computed: {
-    isListEmpty(): boolean {
-      return !this.todosList?.length;
-    }
-  },
   components: { TodoItem, CreateTodo },
 });
 </script>
 
 <style scoped lang="scss">
-@import './styles/variables.scss';
 .todo-list {
-  border-radius: $todo-list-border-radius;
+  border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.5);
   box-sizing: border-box;
   width: 100%;
 }
 
-.create-todo {
-  &.listEmpty {
-    border-radius: $todo-list-border-radius;
-  }
+.create-todo { 
+    border-radius: 22px;
 }
+
 </style>

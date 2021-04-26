@@ -16,16 +16,15 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-$size: 40px;
 .checkbox {
   flex: 0 0 auto;
-  height: $size;
-  width: $size;
+  height: 40px;
+  width: 40px;
   display: flex;
   justify-content: center;
   text-align: center;
   align-items: center;
-  border: 0.888889px solid #e5e5e5;
+  border: 0.8px solid #e4e3e5;
   border-radius: 50%;
   cursor: pointer;
   &_checkmark {

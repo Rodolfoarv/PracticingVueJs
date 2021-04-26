@@ -35,13 +35,12 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
-@import '../styles/variables.scss';
 .pager {
   width: 68px;
   height: 34px;
   margin: 16px 0 0 auto;
   background: #ffffff;
-  border-radius: $todo-list-border-radius;
+  border-radius: 20px;
   display: flex;
   align-items: center;
   overflow: hidden;
