@@ -6,6 +6,7 @@
     )
  
     p.todo-item_description {{ todo.description }}
+    span.todo-item_created-at - {{ createdTime }} minutes
 
     span.todo-item_deleteTodo(@click='$emit("delete", todo)')
       <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -17,6 +18,7 @@
 
 <script lang="ts">
 import { defineComponent,PropType } from '@vue/composition-api';
+import moment from 'moment';
 
 import { Todo } from '@/types/Todo';
 
@@ -30,6 +32,15 @@ export default defineComponent({
       return {
         'todo-item--done': this.todo.done,
       };
+    },
+    createdTime(): number {
+      const startTime = moment(Date.now());
+      const createdAt = moment(this.todo.createdAt);
+      const timeElapsed = startTime.diff(createdAt, 'minute');
+
+      return timeElapsed;
+
+
     },
   },
   data() {
@@ -82,6 +93,16 @@ export default defineComponent({
     text-decoration-line: line-through;
     color: #ccc7c7;
     font-weight: 200;
+  }
+
+  &_created-at {
+    font-weight: 300;
+    font-size: 0.75rem;
+    color: #a6a3a2;
+    white-space: nowrap;
+    display: flex;
+
+
   }
 
 
