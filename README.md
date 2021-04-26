@@ -30,11 +30,11 @@ Before writting any code I saw the requirements of the application in which I no
 
 - Basic Interface Creation (Todo List and Todo Item)
 - Connection with the backend (in order to extract the todolist and execute REST operations)
-- TODO Feature: Create a new todo
-- TODO Feature: Delete a todo
-- TODO Feature: Fetch all todos
-- TODO Feature: Update a todo with the current status
-- TODO Feature: Pagination
+- Todo List Feature: Create a new todo
+- Todo List Feature: Delete a todo
+- Todo List Feature: Fetch all todos
+- Todo List Feature: Update a todo with the current status
+- Todo List Feature: Pagination
 - Testing
 
 Every "small feature" was developed in a separated pull request with the commits associated to it. This is a common practice I follow, afterwards someone reviews my PR or do a Pair Programming exercise to ensure the quality and coding standards of the feature being developed.
@@ -97,8 +97,18 @@ Users are able to search for a todo task
 
 I have used the tool Polypane in order to ensure every browser is working correctly.
 
+Another way of doing this and as future work is to use End to End tests or integrate a tool such as LogRocket or Sentry
+
 ![Search](client/public/polypane.png)
 
 ## What did I learn?
 
 Previously, I have only worked with React and other frameworks, this was the first time I have written code in Vue.js and I have always been eager to learn it, this was an excellent opportunity to do so :)
+
+## What can be done next?
+
+Many things! While my mind comes with many additional features we could build such as sorting, adding a priority to each task or even make it collaborative.
+
+The first thing will always to validate that the product is useful for our end clients, in this case someone uses the Todo website.
+
+Once this, we can discuss with the users and validate which are the next features to be developed and possibly add support for other frameworks like Algolia (Improving the search) and also integrate Sentry and LogRocket in case anything wrong happens.
