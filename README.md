@@ -1,18 +1,14 @@
-# SimpleTodo
+# BitPanda Interview tasks
 
-Bitpanda interview task.
+In this document I will describe all the procedures before developing any code and also how the code was written with Pull Requests and testing each of the features.
 
-## How to do this task
+## Demo
 
-1. Fork this repository (or mirror it to your favourite git service -- Gitlab, Bitbucket, etc.)
-1. Complete the task described below using development practices you're familiar with (git flow)
-1. Use your own fork for all development, don't submit pull requests to origin repository
-1. In case of any questions, contact the HR you interacted with
-1. When finished, notify the HR and provide access to your fork (in case of not using Github / private repository, ask the HR to get our contact email to share access with)
+![FullDemo](client/public/fullDemo.gif)
 
-## Task
+## Objective
 
-Implement Todo MVC application using provided design and backend.
+To create a TODO MVC application with the requirements provided in:
 
 Design: [figma link](https://www.figma.com/file/0zmN3IdInAR8aUGdrQ1w61/html%2Bcss-challenge?node-id=0%3A1)
 
@@ -27,3 +23,82 @@ Requirements:
 - Responsive, use Flexbox (no media queries 🙂)
 - Relative CSS units
 - CSS/SCSS variables where applicable
+
+## Procedure
+
+Before writting any code I saw the requirements of the application in which I noticed there were several tasks and were split in the following **tickets**. Each of them has a different pull request associated and also is split in a different branch, at any point you may check each of the branches to see that particular feature
+
+- Basic Interface Creation (Todo List and Todo Item)
+- Connection with the backend (in order to extract the todolist and execute REST operations)
+- TODO Feature: Create a new todo
+- TODO Feature: Delete a todo
+- TODO Feature: Fetch all todos
+- TODO Feature: Update a todo with the current status
+- TODO Feature: Pagination
+- Testing
+
+Every "small feature" was developed in a separated pull request with the commits associated to it. This is a common practice I follow, afterwards someone reviews my PR or do a Pair Programming exercise to ensure the quality and coding standards of the feature being developed.
+
+## Who reviewed my PR's ?
+
+My friend's dog was in charge with the mission of reviewing my PRs in exchange for treats.
+
+![Doggo](client/public/doggo.jpg)
+
+## Demo usage
+
+### Fetching
+
+When the backend is running, it will fetch all the todo tasks
+
+![Fetch](client/public/1.png)
+
+### Create a new
+
+At the top corner there is a "Take note". Users are able to write a note and it will display at the bottom
+
+![New](client/public/2.png)
+
+After writting you can see there is a new todo task which is **Learn Vue.js for Bitpanda's interview**
+
+### Delete a task
+
+Each of the items, on hover have a cross sign. Users are able to perform this action to delete a todo task and it will get deleted in the backend.
+
+In this case I have erased every task but two, which is one that was already written and the one to learn Vue.js for Bitpanda's interview.
+
+![Delete1](client/public/3.png)
+
+![Delete2](client/public/4.png)
+
+### Update a task
+
+Users are able to update a task either as complete or incomplete. Users are able to click on the circle on the left to perform this.
+
+![Update1](client/public/5.png)
+
+![Update2](client/public/6.png)
+
+Users are able to do this in the frontend and the backend will get updated.
+
+### Pagination
+
+Users are able to scroll through pages
+
+![Pagination](client/public/pagination.gif)
+
+### Searching
+
+Users are able to search for a todo task
+
+![Search](client/public/search.gif)
+
+## Additional UI testing
+
+I have used the tool Polypane in order to ensure every browser is working correctly.
+
+![Search](client/public/polypane.png)
+
+## What did I learn?
+
+Previously, I have only worked with React and other frameworks, this was the first time I have written code in Vue.js and I have always been eager to learn it, this was an excellent opportunity to do so :)
