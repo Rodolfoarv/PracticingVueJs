@@ -3,9 +3,11 @@ const { resolve } = require('path');
 
 module.exports = {
   root: true,
+
   env: {
     node: true,
   },
+
   extends: [
     'eslint:recommended',
 
@@ -20,6 +22,7 @@ module.exports = {
 
     'eslint-config-prettier',
   ],
+
   parserOptions: {
     extraFileExtensions: ['.vue'],
     parser: '@typescript-eslint/parser',
@@ -28,7 +31,9 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: 'module',
   },
+
   plugins: ['prettier'],
+
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
@@ -80,4 +85,16 @@ module.exports = {
     ],
     quotes: ['error', 'single'],
   },
+
+  overrides: [
+    {
+      files: [
+        '**/__tests__/*.{j,t}s?(x)',
+        '**/tests/unit/**/*.spec.{j,t}s?(x)'
+      ],
+      env: {
+        jest: true
+      }
+    }
+  ]
 };
