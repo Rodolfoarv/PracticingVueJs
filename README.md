@@ -97,6 +97,8 @@ Users are able to search for a todo task
 
 I have used the tool Polypane in order to ensure every browser is working correctly.
 
+Another way of doing this and as future work is to use End to End tests or integrate a tool such as LogRocket or Sentry
+
 ![Search](client/public/polypane.png)
 
 ## What did I learn?
@@ -109,4 +111,4 @@ Many things! While my mind comes with many additional features we could build su
 
 The first thing will always to validate that the product is useful for our end clients, in this case someone uses the Todo website.
 
-Once this, we can discuss with the users and validate which are the next features to be developed and possibly add support for other frameworks like Algolia (Improving the search).
+Once this, we can discuss with the users and validate which are the next features to be developed and possibly add support for other frameworks like Algolia (Improving the search) and also integrate Sentry and LogRocket in case anything wrong happens.
