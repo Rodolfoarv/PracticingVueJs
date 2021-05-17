@@ -1,6 +1,8 @@
-# BitPanda Interview tasks
+# Practicing Vue.js Frontend / Backend
 
-In this document I will describe all the procedures before developing any code and also how the code was written with Pull Requests and testing each of the features.
+This is a personal project to put in practice some Vue.js concepts :) it is a really simple TODO MVC aplication
+
+I will describe the process of building the application and also how the code was written with Pull Requests for each of the features needed.
 
 ## Demo
 
@@ -9,10 +11,6 @@ In this document I will describe all the procedures before developing any code a
 ## Objective
 
 To create a TODO MVC application with the requirements provided in:
-
-Design: [figma link](https://www.figma.com/file/0zmN3IdInAR8aUGdrQ1w61/html%2Bcss-challenge?node-id=0%3A1)
-
-Backend: [todo-bitpanda-server](./server/README.md)
 
 Requirements:
 
@@ -26,7 +24,11 @@ Requirements:
 
 ## Procedure
 
-Before writting any code I saw the requirements of the application in which I noticed there were several tasks and were split in the following **tickets**. Each of them has a different pull request associated and also is split in a different branch, at any point you may check each of the branches to see that particular feature
+Before writting any code it is important to note what is needed before hand, this is the technology structure but also each of the features and not try to build them all at once.
+
+This is why it is important to separate each of them in a separate Pull Request.
+
+### The application has the following features:
 
 - Basic Interface Creation (Todo List and Todo Item)
 - Connection with the backend (in order to extract the todolist and execute REST operations)
@@ -42,6 +44,8 @@ Every "small feature" was developed in a separated pull request with the commits
 ## Who reviewed my PR's ?
 
 My friend's dog was in charge with the mission of reviewing my PRs in exchange for treats.
+
+### Wow this big guy really checks all my PRs
 
 ![Doggo](client/public/doggo.jpg)
 
@@ -59,13 +63,13 @@ At the top corner there is a "Take note". Users are able to write a note and it 
 
 ![New](client/public/2.png)
 
-After writting you can see there is a new todo task which is **Learn Vue.js for Bitpanda's interview**
+After writting you can see there is a new todo task which is **Learn Vue.js**
 
 ### Delete a task
 
 Each of the items, on hover have a cross sign. Users are able to perform this action to delete a todo task and it will get deleted in the backend.
 
-In this case I have erased every task but two, which is one that was already written and the one to learn Vue.js for Bitpanda's interview.
+In this case I have erased every task but two, which is one that was already written and the one to learn Vue.js.
 
 ![Delete1](client/public/3.png)
 
@@ -103,7 +107,9 @@ Another way of doing this and as future work is to use End to End tests or integ
 
 ## What did I learn?
 
-Previously, I have only worked with React and other frameworks, this was the first time I have written code in Vue.js and I have always been eager to learn it, this was an excellent opportunity to do so :)
+A lot of things! I have been mainly focusing my work in React.js and Vue.js seems really fun so far.
+
+It has many advantages, some of them are the learning curve it is much faster, the performance, scalability and versatibility one of the disadvantages for me is that the structure of the project is way different from React or Angular, also the community is much smaller but this will change over time :)
 
 ## What can be done next?
 
