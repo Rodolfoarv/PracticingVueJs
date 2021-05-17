@@ -1,6 +1,6 @@
 # Practicing Vue.js Frontend / Backend
 
-This is a personal project to put in practice some Vue.js concepts 😊 it is a really simple TODO MVC aplication
+This is a project to put in practice some Vue.js concepts 😊 it is a really simple TODO MVC aplication. Forked initally from Natalya's repository for the general structure of the backend.
 
 I will describe the process of building the application and also how the code was written with Pull Requests for each of the features needed.
 
