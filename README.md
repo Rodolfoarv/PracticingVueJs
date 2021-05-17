@@ -1,6 +1,6 @@
 # Practicing Vue.js Frontend / Backend
 
-This is a personal project to put in practice some Vue.js concepts :) it is a really simple TODO MVC aplication
+This is a personal project to put in practice some Vue.js concepts 😊 it is a really simple TODO MVC aplication
 
 I will describe the process of building the application and also how the code was written with Pull Requests for each of the features needed.
 
@@ -10,9 +10,7 @@ I will describe the process of building the application and also how the code wa
 
 ## Objective
 
-To create a TODO MVC application with the requirements provided in:
-
-Requirements:
+Technology stack:
 
 - Typescript
 - Vue Composition API
@@ -21,6 +19,7 @@ Requirements:
 - Responsive, use Flexbox (no media queries 🙂)
 - Relative CSS units
 - CSS/SCSS variables where applicable
+- Backend hosted in Heroku
 
 ## Procedure
 
